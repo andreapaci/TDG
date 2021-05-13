@@ -44,7 +44,7 @@ def simulate():
     if matrix is None:
         return "Errore nel check della matrice", 403
 
-    return handler.studio_analitico(matrix, strat1_names, strat2_names, [], [])
+    return handler.studio_analitico(matrix, strat1_names, strat2_names)
 
 
 if __name__ == '__main__':

@@ -94,20 +94,18 @@ def strat_conservative_pure(matrice, strat1_name, strat2_name):
 # Gioco con strategia mista
 def gioco_misto(matrice, strat1_name, strat2_name):
 
-    strat_conservative_miste(matrice)
+    player1 = strat_conservative_miste(matrice)
 
     matrice_player2 = util.neg_matrix(util.traspose(matrice))
-    print("\n" + str(matrice).replace("], ", "], \n").replace("[", "").replace("]", "") + "\n")
-    print(str(matrice_player2).replace("], ", "], \n").replace("[", "").replace("]", "") + "\n")
 
-    strat_conservative_miste(matrice_player2)
+    player2 = strat_conservative_miste(matrice_player2)
 
     # AGGIUNGI VALORE DEL GIOCO MISTO, VERIFICA CHE SE VALORE GIOCO MISTO = VALORE GIOCO PURO E AGGIUNGI IL VALORE ATTESO FACENDO IL PRODOTTO TRA VETTORE E MATRICE
 
+    return {"player1": player1, "player2": player2}
 
 
 def strat_conservative_miste(matrice):
-    print('1\n\n\nSTRAT CONSERVATIVE MISTE\n-------------------------------\n\n')
 
     ##  CONTROLLA CHE AMPL PUò RITORRNARE PIù STRATEGIE CONSERVATIVE SE SONO 2 O PIù
 
@@ -115,7 +113,7 @@ def strat_conservative_miste(matrice):
 
     print(modello)
 
-    ampl_handler.solve_model(modello, matrice)
+    return ampl_handler.solve_model(modello, matrice)
 
 
 # Fa una simulazione del gioco
@@ -133,12 +131,12 @@ def simulazione(matrice, strat1, strat2, n_iterazioni):
 # Restituisce strategie dominanti, conservative e valore del gioco
 def studio_analitico(matrice, strat1_name, strat2_name):
     # Gioco puro
-    x = gioco_puro(matrice, strat1_name, strat2_name)
+    puro = gioco_puro(matrice, strat1_name, strat2_name)
 
     # Gioco misto
-    gioco_misto(matrice, strat1_name, strat2_name)
+    misto = gioco_misto(matrice, strat1_name, strat2_name)
 
-    return x
+    return {"puro": puro, "misto": misto}
 
 
 # USARE CHECK MATRIX E STRATEGY

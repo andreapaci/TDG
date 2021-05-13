@@ -56,7 +56,7 @@ def solve_model(model, matrice):
         variables.append(chr(char_number))
         char_number += 1
 
-    path = "tmp/model.mod"
+    path = "backend/tmp/model.mod"
 
     f = open(path, "w")
     f.write(model)
@@ -67,9 +67,18 @@ def solve_model(model, matrice):
     ampl.read(path)
     ampl.solve()
 
+    solution = []
+    objective = round(ampl.getObjective("value").value(), 3)
+
+
     for var in variables:
         print(str(ampl.getVariable(var)) + ": " + str(ampl.getVariable(var).value()))
+        solution.append(round(ampl.getVariable(var).value(), 3))
+
 
     ampl.close()
 
     os.remove(path)
+
+    return {"objective": objective, "strat": solution}
+

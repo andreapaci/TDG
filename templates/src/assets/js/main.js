@@ -76,24 +76,24 @@
                             document.getElementById("c_segn_pura2").innerHTML = "<i>NaN</i>"
 
 
-                            if(results["strat_dom1"].length != 0) {
-                                document.getElementById("strat_dom1").innerHTML = results["strat_dom1"].join("<br>")
+                            if(results["puro"]["strat_dom1"].length != 0) {
+                                document.getElementById("strat_dom1").innerHTML = results["puro"]["strat_dom1"].join("<br>")
                             }
-                            if(results["strat_dom2"].length != 0) {
-                                document.getElementById("strat_dom2").innerHTML = results["strat_dom2"].join("<br>")
-                            }
-
-
-                            if(results["strat_cons1"].length != 0) {
-                                document.getElementById("strat_cons_pur1").innerHTML = results["strat_cons1"].join("<br>")
-                            }
-                            if(results["strat_cons2"].length != 0) {
-                                document.getElementById("strat_cons_pur2").innerHTML = results["strat_cons2"].join("<br>")
+                            if(results["puro"]["strat_dom2"].length != 0) {
+                                document.getElementById("strat_dom2").innerHTML = results["puro"]["strat_dom2"].join("<br>")
                             }
 
-                            document.getElementById("c_segn_pura1").innerHTML = results["C1"]
-                            document.getElementById("c_segn_pura2").innerHTML = results["C2"]
-                            document.getElementById("value_interval").innerHTML = "[" + (-results["C2"]).toString() + "; " + (results["C1"]).toString() + "]"
+
+                            if(results["puro"]["strat_cons1"].length != 0) {
+                                document.getElementById("strat_cons_pur1").innerHTML = results["puro"]["strat_cons1"].join("<br>")
+                            }
+                            if(results["puro"]["strat_cons2"].length != 0) {
+                                document.getElementById("strat_cons_pur2").innerHTML = results["puro"]["strat_cons2"].join("<br>")
+                            }
+
+                            document.getElementById("c_segn_pura1").innerHTML = results["puro"]["C1"]
+                            document.getElementById("c_segn_pura2").innerHTML = results["puro"]["C2"]
+                            document.getElementById("value_interval").innerHTML = "[" + (-results["puro"]["C2"]).toString() + "; " + (results["puro"]["C1"]).toString() + "]"
 
 
                         }).error(function (error) {
