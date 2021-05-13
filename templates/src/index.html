@@ -20,7 +20,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
   <script src="assets/js/main.js"></script>
-  <body class="header-fixed" >
+  <body class="header-fixed" ng-controller="matrixcontroller" >
     <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
@@ -147,7 +147,8 @@
                 <p class="text-gray">Impostare il numero delle strategie e la matrice di costo</p>
                 </div>
             </div>
-            <div class="row" ng-controller="matrixcontroller">
+            <div>
+            <div class="row" >
 
                 <div class="col-lg-4 col-md-6 equel-grid" style="height:100%;">
                 <div class="grid">
@@ -266,13 +267,13 @@
                                         <td style="border: 0"></td>
                                         <td ng-repeat="x in [].constructor(strat_player2) track by $index"
                                             style="color:white; text-align: center; background-color: #4CCEAC; height:32px; max-height: 32px; padding:5px">
-                                            <div contenteditable>str#[[ $index + 1 ]]</div></td>
+                                            <div id="strat2-[[ $index+ 1 ]]" contenteditable>str#[[ $index + 1 ]]</div></td>
                                     </tr>
-                                    <tr ng-repeat="y in [].constructor(strat_player1) track by $index"; style="height:32px; max-height: 32px; ">
+                                    <tr ng-repeat="(y, category) in [].constructor(strat_player1) track by $index"; style="height:32px; max-height: 32px; ">
                                         <td style="color: white; background-color: #857BFF; padding:5px; height:32px; max-height: 32px;
-                                        width: 32px; text-align: center"><div contenteditable>str#[[ $index + 1]]</div></td>
-                                        <td ng-repeat="x in [].constructor(strat_player2) track by $index" style="text-align: center; width:32px; padding:5px">
-                                            <div contenteditable></div>
+                                        width: 32px; text-align: center"><div id="strat1-[[ $index+ 1 ]]" contenteditable>str#[[ $index + 1]]</div></td>
+                                        <td ng-repeat="(x, category) in [].constructor(strat_player2) track by $index" style="text-align: center; width:32px; padding:5px">
+                                            <div id="C[[y + 1]][[x + 1]]"contenteditable></div>
                                         </td>
                                     </tr>
                                     <!--<tr >
@@ -311,8 +312,8 @@
 
 
 
-                                    <button class="btn btn-success w-50 ml-2" type="button" ng-click="this[saveFunction]()"
-                                        style="min-width: 144px; max-width: 150px; display: flex; justify-content: center;">PROCEDI</button>
+                                    <button class="btn btn-success w-50 ml-2" type="button" ng-click="this[passDataToBackend]()"
+                                        style="min-width: 144px; max-width: 150px; display: flex; justify-content: center;" >PROCEDI</button>
 
                                     <p  style="margin-left: 60px; color:white">URL per questa simulazione: <label style="color: whitesmoke"> . . . / . . .  </label></p>
 
@@ -322,9 +323,9 @@
                 </div>
 
             </div>
-
-
-            <div class="row">
+            </div>
+         <div ng-show="loaded">
+            <div  class="row">
                 <div style="padding-top:10px; padding-bottom:10px">
                 <h4>Analisi e simulazione</h4>
                 <p class="text-gray">Visualizzare l'analisi del gioco e una sua simulazione</p>
@@ -346,13 +347,79 @@
                       <p class="card-title">Summary</p>
                     </div>
 
+                      <style>
+
+                          .value-row{
+                              padding-top: 7px;
+                          }
+
+                          td{
+                            text-align: center;
+                            padding: 5px;
+                          }
+
+                      </style>
+
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 1px; border-right: 1px solid gray; padding-right: 3px"></td><td style="padding: 5px; text-align: center"><b>Player 1</b></td><td style="padding: 5px; text-align: center"><b>Player 2</b></td>
+                        </tr>
+                        <tr style="border-top: 1px solid gray">
+                            <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"><b>Gioco puro</b></td><td style="border-top: 1px solid gray"></td><td style="border-top: 1px solid gray"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. dominante</td><td id="strat_dom1"></td><td id="strat_dom2"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td><td id="strat_cons_pur1"></td><td id="strat_cons_pur2"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">max C(x*)</td><td id="c_segn_pura1"></td><td id="c_segn_pura2"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px;">Val. gioco</td><td colspan="2" id="value_interval"></td>
+                        </tr>
+
+                        <tr style="height: 15px">
+                             <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"><b>Gioco misto</b></td><td></td><td></td>
+                        </tr>
+                         <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td>
+                             <td>
+                                    <table>
+                                         <tr ng-repeat="(y, category) in [].constructor(strat_player1) track by $index";>
+                                                <td id="strat_cons_mist_name1-[[ $index+ 1 ]]">str#[[ $index + 1]]</td>
+                                                <td id="strat_cons_mist1-[[ $index+ 1 ]]"></td>
+                                         </tr>
+                                    </table>
+                            </td>
+                            <td>
+                                <table >
+                                 <tr ng-repeat="(x, category) in [].constructor(strat_player2) track by $index";>
+                                        <td id="strat_cons_mist_name2-[[ $index+ 1 ]]">str#[[ $index + 1]]</td>
+                                        <td id="strat_cons_mist2-[[ $index+ 1 ]]"></td>
+                                 </tr>
+                                </table>
+                             </td>
+
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px"> max C(ξ*)</td><td id="c_segn_misto1"></td><td id="c_segn_misto2"></td>
+                        </tr>
+                    </table>
+
+
                   </div>
 
                 </div>
               </div>
 
         </div>
-
+        </div>
         <!-- content viewport ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

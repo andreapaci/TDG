@@ -18,7 +18,6 @@ def crea_modello_AMPL(matrice):
         char_number += 1
     model += "var Z;\n"
 
-
     model += "\nminimize value: Z;\n"
 
     for i in range(0, len(matrice[0])):
@@ -45,14 +44,10 @@ def crea_modello_AMPL(matrice):
         model += "subject to bound" + str(i) + ": " + chr(char_number) + ">= 0;\n"
         char_number += 1
 
-
     return model
 
 
-
-
 def solve_model(model, matrice):
-
     # Grandezza del vettore delle possibili giocate
     n_scelte = len(matrice)
     char_number = ord('A')
@@ -61,17 +56,16 @@ def solve_model(model, matrice):
         variables.append(chr(char_number))
         char_number += 1
 
-    path = "/tmp/model.mod"
+    path = "tmp/model.mod"
 
     f = open(path, "w")
     f.write(model)
     f.close()
 
-    ampl = amplpy.AMPL(amplpy.Environment('/Users/andreapaci/Downloads/ampl.macos64'))
-
+    ampl = amplpy.AMPL(amplpy.Environment('C:\\Program Files\\ampl.mswin64'))
+    ampl.setOption('solver', 'C:\\Program Files\\ampl.mswin64\\minos')
     ampl.read(path)
     ampl.solve()
-
 
     for var in variables:
         print(str(ampl.getVariable(var)) + ": " + str(ampl.getVariable(var).value()))
@@ -79,5 +73,3 @@ def solve_model(model, matrice):
     ampl.close()
 
     os.remove(path)
-
-
