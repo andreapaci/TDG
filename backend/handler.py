@@ -87,7 +87,7 @@ def strat_conservative_pure(matrice, strat1_name, strat2_name):
         print(
             "Il gioco non ammette valore")  ## SICURI? CONTROLLA CHE SE NON ESISTONO STRATEGIE CONSERVATIVE IL GIOCO NON CRASHA
 
-    return {"strat1": strat_cons_1, "strat2": strat_cons_2, "C1": costo_cons_1, "C2": costo_cons_2}
+    return {"strat1": strat_cons_1, "strat2": strat_cons_2, "C1": round(costo_cons_1, 3), "C2": round(costo_cons_2, 3)}
 
 
 

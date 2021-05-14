@@ -95,6 +95,22 @@
                             document.getElementById("c_segn_pura2").innerHTML = results["puro"]["C2"]
                             document.getElementById("value_interval").innerHTML = "[" + (-results["puro"]["C2"]).toString() + "; " + (results["puro"]["C1"]).toString() + "]"
 
+                            for(let i = 0; i < strat1.length; i++){
+                                document.getElementById("strat_cons_mist_name1-" + (i + 1).toString()).innerHTML = strat1[i]
+                                document.getElementById("strat_cons_mist1-" + (i + 1).toString()).innerHTML = results["misto"]["player1"]["strat"][i]
+
+
+                            }
+                            for(let i = 0; i < strat2.length; i++){
+                                document.getElementById("strat_cons_mist_name2-" + (i + 1).toString()).innerHTML = strat2[i]
+                                document.getElementById("strat_cons_mist2-" + (i + 1).toString()).innerHTML = results["misto"]["player2"]["strat"][i]
+
+                            }
+
+                            document.getElementById("c_segn_misto1").innerHTML = results["misto"]["player1"]["objective"]
+
+
+
 
                         }).error(function (error) {
                             $scope.loaded = false;
@@ -107,6 +123,55 @@
             }
 
   ]);
+
+   // var chartColors = ["#696ffb", "#7db8f9", "#05478f", "#00cccc", "#6CA5E0", "#1A76CA"];
+
+  /*  window.onload = function() {
+
+
+    var options = {
+      type: 'line',
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 2,
+            fill: false,
+            backgroundColor: chartColors[0],
+            borderColor: chartColors[0],
+            //borderWidth: 0
+          },
+          {
+            label: '# of Points',
+            data: [7, 11, 5, 8, 3, 7],
+            borderWidth: 2,
+            fill: false,
+            backgroundColor: chartColors[1],
+            borderColor: chartColors[1],
+            //borderWidth: 0
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              reverse: false
+            }
+          }]
+        },
+        fill: false,
+        legend: false
+      }
+    }
+
+    var ctx = document.getElementById('chartjs-staked-line-chart').getContext('2d');
+
+    var chart = new Chart(ctx, options);
+ }*/
+
+
 
 
 

@@ -343,8 +343,8 @@
               <div class="col-md-4 equel-grid">
                 <div class="grid">
                   <div class="grid-body">
-                    <div class="split-header">
-                      <p class="card-title">Summary</p>
+                    <div class="split-header" style="margin-bottom: 20px ">
+                      <p class="card-title">Analisi</p>
                     </div>
 
                       <style>
@@ -356,6 +356,8 @@
                           td{
                             text-align: center;
                             padding: 5px;
+                            border-right: 1px solid lightgray;
+                            border-bottom: 1px solid lightgray;
                           }
 
                       </style>
@@ -363,52 +365,63 @@
 
                     <table style="width: 100%;">
                         <tr>
-                            <td style="width: 1px; border-right: 1px solid gray; padding-right: 3px"></td><td style="padding: 5px; text-align: center"><b>Player 1</b></td><td style="padding: 5px; text-align: center"><b>Player 2</b></td>
+                            <td style="width: 1px; border-right: 1px solid gray; border-bottom: 1px solid gray; padding-right: 3px"></td>
+                            <td style="padding: 5px; border-bottom: 1px solid gray; text-align: center"><b>Giocatore 1</b></td>
+                            <td style="padding: 5px; border-bottom: 1px solid gray; border-right: 0; text-align: center"><b>Giocatore 2</b></td>
                         </tr>
                         <tr style="border-top: 1px solid gray">
-                            <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"><b>Gioco puro</b></td><td style="border-top: 1px solid gray"></td><td style="border-top: 1px solid gray"></td>
+                            <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px"><b>Gioco puro</b></td><td style="border-top: 1px solid gray; border-bottom: 0;"></td><td style="border-top: 1px solid gray; border-bottom: 0; border-right: 0"></td>
                         </tr>
                         <tr>
-                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. dominante</td><td id="strat_dom1"></td><td id="strat_dom2"></td>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. dominante</td><td  id="strat_dom1"></td><td style="border-right: 0;" id="strat_dom2"></td>
                         </tr>
                         <tr>
-                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td><td id="strat_cons_pur1"></td><td id="strat_cons_pur2"></td>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td><td id="strat_cons_pur1"></td><td style="border-right: 0;" id="strat_cons_pur2"></td>
                         </tr>
                         <tr>
-                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">max C(x*)</td><td id="c_segn_pura1"></td><td id="c_segn_pura2"></td>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">C(x*)</td><td id="c_segn_pura1"></td><td style="border-right: 0;" id="c_segn_pura2"></td>
                         </tr>
                         <tr>
-                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px;">Val. gioco</td><td colspan="2" id="value_interval"></td>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px;">Val. gioco</td><td colspan="2" style="border-right: 0; border-bottom: 0;" id="value_interval"></td>
                         </tr>
 
                         <tr style="height: 15px">
-                             <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"></td><td></td><td></td>
+                             <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px"></td><td style="border-right: 0; border-bottom: 0px"></td><td style="border-right: 0; border-bottom: 0px" ></td>
                         </tr>
                         <tr>
-                            <td style="text-align: center; border-right: 1px solid gray; padding-right: 3px"><b>Gioco misto</b></td><td></td><td></td>
+                            <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px"><b>Gioco misto</b></td><td style="border-right: 0; border-bottom: 0px"></td><td style="border-right: 0; border-bottom: 0px"></td>
                         </tr>
                          <tr>
                             <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td>
-                             <td>
-                                    <table>
-                                         <tr ng-repeat="(y, category) in [].constructor(strat_player1) track by $index";>
-                                                <td id="strat_cons_mist_name1-[[ $index+ 1 ]]">str#[[ $index + 1]]</td>
-                                                <td id="strat_cons_mist1-[[ $index+ 1 ]]"></td>
+                             <td style="border-right:0">
+                                    <table style=" margin-left: auto; margin-right: auto; padding-bottom: 10px">
+                                         <tr ng-repeat="(y, category) in [].constructor(strat_player1 - 1) track by $index">
+                                                <td  id="strat_cons_mist_name1-[[ $index+ 1 ]]">stra#[[ $index + 1]]</td>
+                                                <td  style="border-right: 0" id="strat_cons_mist1-[[ $index + 1 ]]"></td>
+                                         </tr>
+                                         <tr>
+                                                <td  style="border-bottom: 0" id="strat_cons_mist_name1-[[ strat_player1 ]]">stra#[[ $index + 1]]</td>
+                                                <td  style="border-right: 0; border-bottom: 0" id="strat_cons_mist1-[[ strat_player1 ]]"></td>
                                          </tr>
                                     </table>
                             </td>
-                            <td>
-                                <table >
-                                 <tr ng-repeat="(x, category) in [].constructor(strat_player2) track by $index";>
-                                        <td id="strat_cons_mist_name2-[[ $index+ 1 ]]">str#[[ $index + 1]]</td>
-                                        <td id="strat_cons_mist2-[[ $index+ 1 ]]"></td>
+
+                            <td style="border-right: 0; padding-bottom: 10px">
+                                <table style=" margin-left: auto; margin-right: auto;">
+                                 <tr ng-repeat="(x, category) in [].constructor(strat_player2 - 1) track by $index">
+                                        <td id="strat_cons_mist_name2-[[ $index+ 1 ]]">stra#[[ $index + 1]]</td>
+                                        <td style="border-right: 0" id="strat_cons_mist2-[[ $index+ 1 ]]"></td>
+                                 </tr>
+                                    <tr>
+                                        <td style="border-bottom: 0" id="strat_cons_mist_name2-[[ strat_player2 ]]">stra#[[ $index + 1]]</td>
+                                        <td style="border-right: 0; border-bottom: 0" id="strat_cons_mist2-[[ strat_player2 ]]"></td>
                                  </tr>
                                 </table>
                              </td>
 
                         </tr>
                         <tr>
-                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px"> max C(ξ*)</td><td id="c_segn_misto1"></td><td id="c_segn_misto2"></td>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px">Val. gioco</td><td style="border-right: 0; border-bottom: 0" colspan="2" id="c_segn_misto1"></td>
                         </tr>
                     </table>
 
