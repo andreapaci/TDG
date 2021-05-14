@@ -9,6 +9,7 @@
   teoriagiochi.controller('matrixcontroller', ['$scope', '$log', '$http', function($scope, $log, $http) {
                 $scope.strat_player1 = 0;
                 $scope.strat_player2 = 0;
+                $scope.iteration = 0;
                 $scope.loaded = false;
 
                 $scope.saveFunction = "updateStrat";
@@ -118,58 +119,64 @@
                         });
                     }
                 };
+                //CONITNUA DA QUI
+                $scope.iterate = "simulation";
+                $scope.simulation = function() {
+                    $log.log("Iterazione: " + $scope.iteration);
+
+                }
 
 
             }
 
   ]);
 
-   // var chartColors = ["#696ffb", "#7db8f9", "#05478f", "#00cccc", "#6CA5E0", "#1A76CA"];
+    var chartColors = ["#696ffb", "#7db8f9", "#05478f", "#00cccc", "#6CA5E0", "#1A76CA"];
 
-  /*  window.onload = function() {
+    window.onload = function() {
 
 
-    var options = {
-      type: 'line',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 2,
-            fill: false,
-            backgroundColor: chartColors[0],
-            borderColor: chartColors[0],
-            //borderWidth: 0
+        var options = {
+          type: 'line',
+          data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [0],
+                borderWidth: 2,
+                fill: false,
+                backgroundColor: chartColors[0],
+                borderColor: chartColors[0],
+                //borderWidth: 0
+              },
+              {
+                label: '# of Points',
+                data: [0],
+                borderWidth: 2,
+                fill: false,
+                backgroundColor: chartColors[1],
+                borderColor: chartColors[1],
+                //borderWidth: 0
+              }
+            ]
           },
-          {
-            label: '# of Points',
-            data: [7, 11, 5, 8, 3, 7],
-            borderWidth: 2,
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  reverse: false
+                }
+              }]
+            },
             fill: false,
-            backgroundColor: chartColors[1],
-            borderColor: chartColors[1],
-            //borderWidth: 0
+            legend: false
           }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              reverse: false
-            }
-          }]
-        },
-        fill: false,
-        legend: false
-      }
+        }
+
+        var ctx = document.getElementById('chartjs-staked-line-chart').getContext('2d');
+
+        var chart = new Chart(ctx, options);
     }
-
-    var ctx = document.getElementById('chartjs-staked-line-chart').getContext('2d');
-
-    var chart = new Chart(ctx, options);
- }*/
 
 
 

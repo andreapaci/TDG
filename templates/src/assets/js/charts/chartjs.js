@@ -37,7 +37,7 @@ $(function () {
     var ctx = document.getElementById('chartjs-staked-area-chart').getContext('2d');
     new Chart(ctx, options);
   }
-
+/*
   if ($("#chartjs-staked-line-chart").length) {
     var options = {
       type: 'line',
@@ -80,7 +80,7 @@ $(function () {
 
     var chart = new Chart(ctx, options);
 
-  }
+  }*/
 
   if ($("#chartjs-bar-chart").length) {
     var BarData = {

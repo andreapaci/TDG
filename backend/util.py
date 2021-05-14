@@ -93,9 +93,10 @@ def choose_strategy(strat_list):
     rand = random.random()
     for e in strat_list:
         sum += e
-        if rand < sum:
+        if rand <= sum:
             return strat
         strat += 1
+    return strat - 1
 
 # Ritorna una lista data dall'interesezione delle due
 def intersection(lst1, lst2):
