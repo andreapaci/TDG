@@ -66,8 +66,10 @@ def solve_model(model, matrice):
     f.write(model)
     f.close()
 
-    ampl = amplpy.AMPL(amplpy.Environment('C:\\Program Files\\ampl.mswin64'))
-    ampl.setOption('solver', 'C:\\Program Files\\ampl.mswin64\\minos')
+    #ampl = amplpy.AMPL(amplpy.Environment('C:\\Program Files\\ampl.mswin64'))
+    #ampl.setOption('solver', 'C:\\Program Files\\ampl.mswin64\\minos')
+    ampl = amplpy.AMPL(amplpy.Environment('/Users/andreapaci/Downloads/ampl.macos64'))
+    ampl.setOption('solver', '/Users/andreapaci/Downloads/ampl.macos64/minos')
     ampl.read(path)
     ampl.solve()
 
