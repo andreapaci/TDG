@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="teoriagiochi">
+<html lang="en" ng-app="teoriagiochi" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Label - Premium Responsive Bootstrap 4 Admin & Dashboard Template</title>
-    <!-- plugins:css -->
+    <title>Simulatore di gioco</title>
+
     <link rel="stylesheet" href="assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
-    <!-- endinject -->
-    <!-- vendor css for this page -->
-    <!-- End vendor css for this page -->
-    <!-- inject:css -->
+
     <link rel="stylesheet" href="assets/css/shared/style.css">
-    <!-- endinject -->
-    <!-- Layout style -->
+
     <link rel="stylesheet" href="assets/css/demo_1/style.css">
-    <!-- Layout style -->
+
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -23,12 +19,7 @@
   <body class="header-fixed" ng-controller="matrixcontroller" >
     <!-- partial:partials/_header.html -->
     <nav class="t-header">
-      <div class="t-header-brand-wrapper">
-        <a href="index.html">
-          <img class="logo" src="assets/images/logo.svg" alt="">
-          <img class="logo-mini" src="assets/images/logo_mini.svg" alt="">
-        </a>
-      </div>
+
       <div class="t-header-content-wrapper">
           <div style="padding-top: 15px">
             <p class="mb-4 display-2">Simulatore di gioco</p>
@@ -38,85 +29,8 @@
     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
-      <div class="sidebar">
-        <div class="user-profile">
-          <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="assets/images/profile/male/image_1.png" alt="profile image">
-          </div>
-          <div class="info-wrapper">
-            <p class="user-name">Allen Clerk</p>
-            <h6 class="display-income">$3,400,00</h6>
-          </div>
-        </div>
-        <ul class="navigation-menu">
-          <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="index.html">
-              <span class="link-title">Dashboard</span>
-              <i class="mdi mdi-gauge link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">Sample Pages</span>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">Login</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">Error</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">UI Elements</span>
-              <i class="mdi mdi-bullseye link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="ui-elements">
-              <li>
-                <a href="pages/ui-components/buttons.html">Buttons</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/tables.html">Tables</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/typography.html">Typography</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="pages/forms/form-elements.html">
-              <span class="link-title">Forms</span>
-              <i class="mdi mdi-clipboard-outline link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <span class="link-title">Charts</span>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="pages/icons/material-icons.html">
-              <span class="link-title">Icons</span>
-              <i class="mdi mdi-flower-tulip-outline link-icon"></i>
-            </a>
-          </li>
-          <li class="nav-category-divider">DOCS</li>
-          <li>
-            <a href="../docs/docs.html">
-              <span class="link-title">Documentation</span>
-              <i class="mdi mdi-asterisk link-icon"></i>
-            </a>
-          </li>
-        </ul>
-        <div class="sidebar-upgrade-banner">
-          <p class="text-gray">Upgrade to <b class="text-primary">PRO</b> for more exciting features</p>
-          <a class="btn upgrade-btn" target="_blank" href="http://www.uxcandy.co/product/label-pro-admin-template/">Upgrade to PRO</a>
-        </div>
+      <div class="sidebar" style="width: 0px; max-width: 0px; min-width: 0">
+
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
@@ -134,13 +48,27 @@
                     <h2 class="grid-title">Come funziona?</h2>
                     <div class="item-wrapper">
                       <p>Questo applicativo permette di studiare e simulare i giochi in strategia pura e mista. Scorrendo più in basso è possibile procedere con i vari step per inizializzare la simulazione</p>
-                      <p class="text-muted">
+                      <br>
+                    </div>
+                    <div class="item-wrapper">
+                        <p  style="margin-bottom: 15px"> <b>OPZIONALE: </b> Inserire nella casella sottostante il codice che identifica il gioco per caricare automaticamente i suoi dati</p>
+
+                            <div class="d-flex col-md-9 showcase_content_area">
+                              <input style="width: 200px" type="text" class="form-control" id="code" placeholder="Inserisci il codice qui">
+                            </div>
+                            <div class="d-flex flex-row mt-4 mb-4">
+                                <button style="max-width: 160px" class="btn btn-primary w-50 ml-2" type="button" ng-click="this[loadDataB64]()">CARICA</button>
+                            </div>
+
+
+                        <p class="text-muted">
                         <b>Nota bene:</b> l'applicazione non è studiata per essere usata commercialmente, perciò usarla non seguendo le linee guida potrebbe portare a risultati inaspettati
                       </p>
                     </div>
                   </div>
                 </div>
             </div>
+
             <div class="row">
                 <div style="padding-top:10px; padding-bottom:10px">
                 <h4>Parametri del gioco</h4>
@@ -163,7 +91,7 @@
                     <div class="d-flex mt-2" >
                         <p class="ml-1 font-weight-bold">Giocatore 1</p>
                         <select id = "strat1" class="custom-select" style="width:50%; margin:auto;">
-                                <option value="0" selected class="text-gray"># strategie</option>
+                                <option value="0" selected class="text-gray"><i>Nessuno</i></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -178,7 +106,7 @@
                     <div class="d-flex mt-2">
                         <p class="ml-1 font-weight-bold">Giocatore 2</p>
                         <select id = "strat2" class="custom-select" style="width:50%; margin:auto;">
-                                <option value="0" selected class="text-gray"># strategie </option>
+                                <option value="0" selected class="text-gray"><i>Nessuno</i></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -189,6 +117,7 @@
                                 <option value="8">8</option>
                         </select>
                     </div>
+
                     <br>
                     <div class="d-flex flex-row mt-4 mb-4">
                       <button class="btn btn-primary w-50 ml-2" type="button" ng-click="this[saveFunction]()">SALVA</button>
@@ -201,8 +130,9 @@
                 <div class="grid widget-revenue-card">
                   <div class="grid-body d-flex flex-column h-100">
 
-                        <div class="d-flex align-items-end mt-2" style="justify-content: center;">
-                            <h3>Matrice di costo</h3>
+                        <div class="d-flex mt-2" style="justify-content: center; align-items: center">
+                            <h3 style="">Matrice di costo</h3>
+
                         </div>
                        <div  style="margin: 0">
                         <div class="grid-body">
@@ -310,12 +240,12 @@
                   <div class="grid-body" style="width: 100%; min-width: 100%; display: flex">
                     <div class="item-wrapper" style="width: 100%; min-width: 100%; display: flex; justify-content: center; align-items: center">
 
-
-
                                     <button class="btn btn-success w-50 ml-2" type="button" ng-click="this[passDataToBackend]()"
                                         style="min-width: 144px; max-width: 150px; display: flex; justify-content: center;" >PROCEDI</button>
 
-                                    <p  style="margin-left: 60px; color:white">URL per questa simulazione: <label style="color: whitesmoke"> . . . / . . .  </label></p>
+                                    <p  style="display: flex; justify-content: center; margin-left: 60px; color:white">Codice di questo gioco:
+                                        <textarea onClick="this.select();" readonly id="generated_code"rows="1" cols="10" placeholder=""
+                                  style="display: flex; justify-content: center; border-radius: 3px; overflow:hidden; color: whitesmoke; background-color: rgba(255,255,255,0.25); border-color: rgba(43,51,249,0); height: 70%; margin-left: 8px; margin-right: 4px" value=" Nessuno"> Nessuno</textarea></p>
 
 
                     </div>
@@ -334,10 +264,73 @@
              <div class="row">
                 <div class="col-md-8 equel-grid">
                 <div class="grid">
-                  <div class="grid-body py-3">
+                  <div class="grid-body py-3" style="margin-bottom: 20px">
                     <p class="card-title ml-n1">Simulazione</p>
+                       <div class="btn btn-primary btn-rounded" ng-click="this[iterate]()"
+                            style="margin-right: 15px; margin-left: 15px; margin-bottom: 5px; float: right">Simula
+                        <textarea ng-click="$event.stopPropagation()" id="iteration"rows="1" cols="8" placeholder=""
+                                  style="text-align: center; border-radius: 3px; overflow:hidden; color: whitesmoke; background-color: rgba(255,255,255,0.25); border-color: rgba(43,51,249,0); height: 70%; margin-left: 4px; margin-right: 4px "></textarea>
+                        iterazioni del gioco <i style="" class="mdi mdi-play"></i>
+                    </div>
                   </div>
-                   <canvas id="chartjs-staked-line-chart" width="600" height="400"></canvas>
+                    <style>
+                        .pers-grid{
+                            background: #fff;
+                            border-radius: 6px;
+                            box-shadow: 0 0 10px -5px rgba(183, 192, 206, 0.15);
+                            margin-bottom: 15px;
+                            border: 1px solid rgba(238, 238, 238, 0);
+                            margin-left: 20px;
+                            margin-right: 20px;
+                        }
+                        ::placeholder {
+                              color: green;
+                              font-size: 1.5em;
+                        }
+                    </style>
+                   <canvas id="chartjs-chart" width="600" height="400"></canvas>
+
+
+                    <div class="row" style=" display: flex; margin-left: 1px; margin-top: 10px; justify-content: center;">
+                        <div class="pers-grid" style=" display: flex; background-image: linear-gradient(to bottom right, rgb(29,72,141), rgb(96,101,205));">
+                          <div class="grid-body" style=" display: flex">
+                            <div class="item-wrapper" style=" display: flex; justify-content: center; align-items: center">
+
+                                 <label style="color: whitesmoke">Vettore strategie ξ<sub>1</sub></label>
+
+                                <table style="border:1px solid white; text-align: center;margin-left: 20px">
+                                     <tr>
+                                         <td style="min-width: 32px; background-color: #857BFF; color: whitesmoke" ng-repeat="(x, category) in [].constructor(strat_player1) track by $index" id = "strat_choose_name1-[[x + 1]]">stra#[[ x + 1]]</td>
+                                     </tr>
+                                    <tr>
+                                         <td style="color: whitesmoke" ng-repeat="(x, category) in [].constructor(strat_player1) track by $index"><div id = "strat_choose1-[[x + 1]]" contenteditable></div></td>
+                                     </tr>
+                                 </table>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="pers-grid" style=" display: flex; background-image: linear-gradient(to bottom right, rgb(56,154,128), rgb(76,206,172));">
+                          <div class="grid-body" style=" display: flex">
+                            <div class="item-wrapper" style=" display: flex; justify-content: center; align-items: center">
+
+                                <label style="color: whitesmoke">Vettore strategie ξ<sub>2</sub></label>
+
+                                 <table style="border:1px solid white; text-align: center; margin-left: 20px">
+                                     <tr>
+                                         <td style="min-width: 32px; background-color: #4CCEAC; color: whitesmoke" ng-repeat="(x, category) in [].constructor(strat_player2) track by $index" id = "strat_choose_name2-[[x + 1]]">stra#[[ x + 1]]</td>
+                                     </tr>
+                                     <tr>
+                                         <td style="color: whitesmoke" ng-repeat="(x, category) in [].constructor(strat_player2) track by $index"><div id = "strat_choose2-[[x + 1]]"contenteditable></div></td>
+                                     </tr>
+                                 </table>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+
                 </div>
               </div>
               <div class="col-md-4 equel-grid">
@@ -359,6 +352,7 @@
                             border-right: 1px solid lightgray;
                             border-bottom: 1px solid lightgray;
                           }
+
 
                       </style>
 
@@ -384,12 +378,8 @@
                         <tr>
                             <td class="value-row" style="text-align: right; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px;">Val. gioco</td><td colspan="2" style="border-right: 0; border-bottom: 0;" id="value_interval"></td>
                         </tr>
-
-                        <tr style="height: 15px">
-                             <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px"></td><td style="border-right: 0; border-bottom: 0px"></td><td style="border-right: 0; border-bottom: 0px" ></td>
-                        </tr>
                         <tr>
-                            <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px"><b>Gioco misto</b></td><td style="border-right: 0; border-bottom: 0px"></td><td style="border-right: 0; border-bottom: 0px"></td>
+                            <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; border-top: 1px solid grey;  padding-right: 3px"><b>Gioco misto</b></td><td style="border-right: 0;  border-top: 1px solid grey; border-bottom: 0px"></td><td style="border-right: 0;  border-top: 1px solid grey; border-bottom: 0px"></td>
                         </tr>
                          <tr>
                             <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Str. conservativa </td>
@@ -423,6 +413,15 @@
                         <tr>
                             <td class="value-row" style="text-align: right; border-right: 1px solid gray; border-bottom: 0; padding-right: 3px">Val. gioco</td><td style="border-right: 0; border-bottom: 0" colspan="2" id="c_segn_misto1"></td>
                         </tr>
+                        <tr>
+                            <td style="text-align: center; border-right: 1px solid gray; border-bottom: 0; border-top: 1px solid grey;  padding-right: 3px"><b>Strategia</b></td><td style="border-right: 0;  border-top: 1px solid grey; border-bottom: 0px"></td><td style="border-right: 0;  border-top: 1px solid grey; border-bottom: 0px"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray; padding-right: 3px">Val. atteso<br>(ξ<sub>1</sub>C<sub>1</sub>ξ<sub>2</sub><sup>T</sup>)</td><td style="border-right: 0; " colspan="2" id="eCe"></td>
+                        </tr>
+                        <tr>
+                            <td class="value-row" style="text-align: right; border-right: 1px solid gray;border-bottom: 0; padding-right: 3px">Val. atteso <br> simulazione <br>(C<sub>tot</sub>/#iterazioni)</td><td style="border-right: 0; border-bottom: 0" colspan="2" id="simulation_value"></td>
+                        </tr>
                     </table>
 
 
@@ -439,19 +438,19 @@
           <div class="row">
             <div class="col-sm-6 text-center text-sm-right order-sm-1">
               <ul class="text-gray">
-                <li><a href="#">Terms of use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+
               </ul>
             </div>
             <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">
-              <small class="text-muted d-block">Copyright © 2019 <a href="http://www.uxcandy.co" target="_blank">UXCANDY</a>. All rights reserved</small>
-              <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
+              <small class="text-gray mt-2">Sviluppato da Andrea Paci</i></small>
             </div>
           </div>
         </footer>
         <!-- partial -->
       </div>
       <!-- page content ends -->
+    </div>
+      </div>
     </div>
     <!--page body ends -->
     <!-- SCRIPT LOADING START FORM HERE /////////////-->
@@ -462,6 +461,7 @@
     <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendors/chartjs/Chart.min.js"></script>
     <script src="assets/js/charts/chartjs.addon.js"></script>
+    <script src="assets/js/charts/chartjs-plugin-downsample.js"></script>
     <!-- Vendor Js For This Page Ends-->
     <!-- build:js -->
     <script src="assets/js/charts/chartjs.js"></script>

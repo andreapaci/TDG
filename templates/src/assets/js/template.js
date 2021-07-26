@@ -27,6 +27,8 @@ MobileToggler.on("click", function () {
 });
 
 
+
+
 // CHECK FOR CURRENT PAGE AND ADDS AN ACTIVE CLASS FOR TO THE ACTIVE LINK
 var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
 $('.navigation-menu li a', TemplateSidebar).each(function () {
@@ -71,7 +73,8 @@ $(".btn.btn-like").on("click", function () {
 
 function purchaseBanner() {
   var bannerState = localStorage.getItem('bannerState') ? localStorage.getItem('bannerState') : "enabled";
-  if (bannerState == "enabled") {
+  localStorage.setItem('bannerState', "disabled");
+  if(0){//if (bannerState == "enabled") {
     $("body").addClass("purchase-banner-active");
     $("body").prepend('\
           <div class= "item-purchase-banner">\
@@ -85,9 +88,10 @@ function purchaseBanner() {
     $(".item-purchase-banner .toggler-close").on("click", function () {
       $(".item-purchase-banner").slideUp(300);
       $("body").removeClass("purchase-banner-active");
-      localStorage.setItem('bannerState', "disabled");
+
     });
   }
 }
+
 
 purchaseBanner();

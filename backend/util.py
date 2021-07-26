@@ -1,8 +1,8 @@
-# File conenente funzioni di utilità
-
-
 import copy
 import random
+
+# File contenente funzioni di utilità
+
 
 # Restituisce la colonna i-esima dalla matrice (contando da 0)
 def column(matrix, i):
@@ -18,12 +18,21 @@ def traspose(matrix):
 
 
 # Converte la matrice di stringhe in una matrice di float
-def convertToFloat(matrix):
+def convertMatrixToFloat(matrix):
     try:
         newMatrix = [[(eval(matrix[i][j], {'__builtins__': None})) for j in range(len(matrix[0]))] for i in range(len(matrix))]
     except ValueError:
         return None
     return newMatrix
+
+
+# Converte la strategia di stringhe in una matrice di float
+def convertStratToFloat(strat):
+    try:
+        newStrat = [(eval(strat[i], {'__builtins__': None})) for i in range(len(strat))]
+    except ValueError:
+        return None
+    return newStrat
 
 
 # Restituisce la matrice dei payoff dal punto di vista del player 2
@@ -69,21 +78,24 @@ def isfloat(str):
         return False
     return True
 
+
 # Controlla che il vettore delle strategie miste sia corretto:
 #   - tutti i valori >= 0
 #   - somma dei valori == 1
 #   - numero elemnti strategia mista = numero strategie pure
-def check_strategy(vect, n):
+def check_strategy(vect):
     sum = 0
-    if len(vect) != n:
-        return False
     for elem in vect:
         if elem < 0:
             return False
         sum += elem
 
-    if sum != 1:
+    #Tolleranza approssimazione del float
+    if sum < 0.99 or sum > 1.01:
         return False
+
+    return True
+
 
 # Dato un vettore di strategie simula la scelta randomica pesata di una strategia e la ritorna
 def choose_strategy(strat_list):
@@ -91,12 +103,15 @@ def choose_strategy(strat_list):
     strat = 0
     sum = 0
     rand = random.random()
+
+
     for e in strat_list:
         sum += e
         if rand <= sum:
             return strat
         strat += 1
     return strat - 1
+
 
 # Ritorna una lista data dall'interesezione delle due
 def intersection(lst1, lst2):

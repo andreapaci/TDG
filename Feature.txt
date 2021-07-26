@@ -1,7 +1,26 @@
-# TDG
-Simulatore teoria dei giochi
++++++++++++++[Feature del progetto]+++++++++++++
 
-## Giochi noti
+ - Inserimento di codice per caricare/scaricare giochi già pronti
+
+ - L'inserimento dei valori in matrice e strategia
+ permette espressioni come frazioni o somme di valori
+
+ - Scelta numero iterazioni del gioco
+
+ - Legenda
+
+ - Tabella al lato (Chiedi se va bene come sono stati chiamati
+
+ - Largest-Triangle-Three-Buckets
+
+ - DownSampling
+
+
+
+
+
+
+[Giochi noti]
 
 Copiare il codice ed incollarlo nell'apposita sezione per caricare il Gioco
 
@@ -16,5 +35,4 @@ eyJzdHJhdDEiOjIsInN0cmF0MiI6Miwic3RyYXQxX25hbWUiOlsiYSIsImIiXSwic3RyYXQyX25hbWUi
 
 Compito Gioco 9-12-15B Esercizio 1
 eyJzdHJhdDEiOjMsInN0cmF0MiI6NSwic3RyYXQxX25hbWUiOlsic3RyIzEiLCJzdHIjMiIsInN0ciMzIl0sInN0cmF0Ml9uYW1lIjpbInN0ciMxIiwic3RyIzIiLCJzdHIjMyIsInN0ciM0Iiwic3RyIzUiXSwibWF0cml4IjpbWyIyIiwiMiIsIi0xIiwiNCIsIi0xIl0sWyI1IiwiLTEiLCItMSIsIi0xIiwiLTEiXSxbIi0xIiwiMyIsIi0xIiwiLTEiLCIzIl1dfQ==
-
 

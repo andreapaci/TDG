@@ -363,7 +363,7 @@ footer {
   background: #fff; }
 
 .page-content-wrapper {
-  background: #fbfcfd;
+  background: #f8f9fa;
   border-left: 1px solid #f2f4f9; }
 
 @media (min-width: 992px) {
@@ -378,7 +378,7 @@ footer {
     grid-template-columns: 17rem calc(100vw - 17rem);
     transition: 0.3s; }
     .page-body .page-content-wrapper {
-      position: relative;
+      position: absolute;
       width: 100%;
       min-height: 100vh;
       padding: 1.5rem 2.5rem calc(90px + 1.5rem);
@@ -457,7 +457,7 @@ footer {
   .page-body {
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+    aaaaoverflow: hidden;
     max-width: 100%; }
     .page-body .sidebar {
       position: relative;

@@ -72,9 +72,7 @@ def solve_model(model, matrice):
 
 
     for var in variables:
-        print(str(ampl.getVariable(var)) + ": " + str(ampl.getVariable(var).value()))
         solution.append(round(ampl.getVariable(var).value(), 3))
-
 
     ampl.close()
 
