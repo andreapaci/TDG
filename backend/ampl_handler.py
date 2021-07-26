@@ -4,9 +4,11 @@ import amplpy
 import os
 
 
+
 # Crea lo script di AMPL per il problema di programmazione lineare
 #   per il primo ed il secondo giocatore
-def crea_modello_AMPL(matrice):
+def create_AMPL_model(matrice):
+
     # Player 1
     model = ""
 
@@ -47,7 +49,9 @@ def crea_modello_AMPL(matrice):
     return model
 
 
+# Risoluzione del modello
 def solve_model(model, matrice):
+
     # Grandezza del vettore delle possibili giocate
     n_scelte = len(matrice)
     char_number = ord('A')

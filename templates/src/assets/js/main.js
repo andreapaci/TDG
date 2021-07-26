@@ -23,7 +23,7 @@
   var options = {
             type: 'line',
             data: {
-                //labels: [0],
+
                 datasets: [{
                         label: 'Costo Giocatore 1',
                         data: [
@@ -33,12 +33,10 @@
                         borderWidth: 1,
                         fill: false,
                         radius: 1,
-                        tension: 0,   //CAMBIA A 0
+                        tension: 0,
                         backgroundColor: chartColors[1],
                         borderColor: chartColors[1],
-                        //indexAxis: 'x',
-                        //parsing: false,
-                        //borderWidth: 0
+
                     },
                 {
                         label: 'Val. atteso',
@@ -52,24 +50,11 @@
                         tension: 0,   //CAMBIA A 0
                         backgroundColor: chartColors[2],
                         borderColor: chartColors[2],
-                        //indexAxis: 'x',
-                        //parsing: false,
-                        //borderWidth: 0
+
                     }]
             },
             options: {
                 responsive: true,
-                //bezierCurve: false,
-                //tension : false,
-                //stepped: 0,
-                //borderDash: [],
-                //parsing: false,
-                //indexAxis: 'x',
-                /*interaction: {
-                    mode: 'nearest',
-                    axis: 'x',
-                    intersect: false
-                },*/
                  downsample: {
                     enabled: true,
                     threshold: 20 // max number of points to display per dataset
@@ -82,8 +67,8 @@
                         type: 'linear',
                         display: true,
                         scaleLabel: {
-                                display: true, // mandatory
-                                labelString: '# Iterazioni' // optional
+                                display: true,
+                                labelString: '# Iterazioni'
                         },
                         ticks: {
                             source: 'auto',
@@ -94,7 +79,7 @@
                         }
                     }],
 
-                    yAxes: [{ // and your y axis customization as you see fit...
+                    yAxes: [{
                         display: true,
                         scaleLabel: {
                              display: true,
@@ -102,20 +87,18 @@
                         }
                     }],
                 },
-                //legend: true
             }
         }
 
+
+
     window.onload = function() {
-
-
-
-
 
         var ctx = document.getElementById('chartjs-chart').getContext('2d');
 
         chart = new Chart(ctx, options);
     }
+
 
 
 
@@ -170,11 +153,8 @@
 
                     if(strat1 == 0 || strat2 == 0){ alert("Inserire numero di strategie valido") }
 
-
-
-
-                    console.log($scope.strat_player1);
-                    console.log($scope.strat_player2);
+                    //console.log($scope.strat_player1);
+                    //console.log($scope.strat_player2);
 
 
 
@@ -232,11 +212,11 @@
                     "strat1_name" : strat1, "strat2_name" : strat2, "matrix" : C};
 
 
-                    console.log(data)
+                    //console.log(data)
 
                     var dataJSON = JSON.stringify(data);
 
-                    console.log(dataJSON)
+                    //console.log(dataJSON)
 
                     if($scope.strat_player1 > 0 && $scope.strat_player2 > 0) {
                         $http.post('/results', data).success(function (results) {
@@ -244,7 +224,7 @@
                             var code = btoa(dataJSON)
                             document.getElementById("generated_code").value = code
 
-                            $log.log(results)
+                            //$log.log(results)
 
                             $scope.loaded = true;
 
@@ -319,8 +299,8 @@
 
                 $scope.iterate = "simulation";
                 $scope.simulation = function() {
-                    $log.log("Iterazione: " + $scope.iteration);
-                    $log.log("Ultimo valore dell'iterazione: " + $scope.last_iteration_value);
+                    //$log.log("Iterazione: " + $scope.iteration);
+                    //$log.log("Ultimo valore dell'iterazione: " + $scope.last_iteration_value);
 
                     var strat_misto_1 = []
                     var strat_misto_2 = []
@@ -339,58 +319,45 @@
                         "n_iterazioni": n_iterazioni, "ultimo_val": $scope.last_iteration_value,
                         "matrix": $scope.payoffmatrix}
 
-                    $log.log(data)
+                    //$log.log(data)
                     $http.post('/simulate', data).success(function (results) {
 
-                            $log.log(results)
+                            //$log.log(results)
 
 
-                            let new_labels = []
-                            for(let i = $scope.iteration; i < $scope.iteration + parseInt(n_iterazioni); i++){
-                                //chart.data.labels.push(i + 1)
-                            }
+                        //let new_labels = []
+                        /*for(let i = $scope.iteration; i < $scope.iteration + parseInt(n_iterazioni); i++){
+                            //chart.data.labels.push(i + 1)
+                        }*/
 
-                            //$scope.iteration = $scope.iteration + parseInt(n_iterazioni)
-
-
-
-
-
-
-
-                                for(let i = 0; i < results["costo"].length; i++) {
-                                    let value = $scope.iteration + i + 1
-                                    $log.log(value)
-                                    originalData.push({x: $scope.iteration + i + 1, y: Number((results["costo"][i]).toFixed(3))})
-                                }
+                        for(let i = 0; i < results["costo"].length; i++) {
+                            let value = $scope.iteration + i + 1
+                            //$log.log(value)
+                            originalData.push({x: $scope.iteration + i + 1, y: Number((results["costo"][i]).toFixed(3))})
+                        }
 
 
-                                for(let i = 0; i < results["costo"].length; i++) {
-                                    let value = $scope.iteration + i + 1
-                                    $log.log(value)
-                                    originalExpectedValue.push({x: $scope.iteration + i + 1, y: Number((parseFloat(results["val_strat"]) * ($scope.iteration + i + 1)).toFixed(3)) })
-                                }
+                        for(let i = 0; i < results["costo"].length; i++) {
+                            let value = $scope.iteration + i + 1
+                            //$log.log(value)
+                            originalExpectedValue.push({x: $scope.iteration + i + 1, y: Number((parseFloat(results["val_strat"]) * ($scope.iteration + i + 1)).toFixed(3)) })
+                        }
 
-                            $scope.iteration = $scope.iteration + parseInt(n_iterazioni)
-
-                            //chart.options.bezierCurve = true
-                            //downsample();
-                            $scope.last_iteration_value = Number((results["costo"][results["costo"].length - 1]).toFixed(3));
-
-                             var simulationValue = (($scope.last_iteration_value/$scope.iteration)).toFixed(3);
+                        $scope.iteration = $scope.iteration + parseInt(n_iterazioni)
 
 
-                            document.getElementById("eCe").innerHTML = (results["val_strat"]).toString()
-                            document.getElementById("simulation_value").innerHTML = simulationValue
+                        $scope.last_iteration_value = Number((results["costo"][results["costo"].length - 1]).toFixed(3));
+
+                        var simulationValue = (($scope.last_iteration_value/$scope.iteration)).toFixed(3);
 
 
-                            chart.data.datasets[0].data = downsample(originalData, 500);
-                            chart.data.datasets[1].data = downsample(originalExpectedValue, 500);
-                            chart.update();
+                        document.getElementById("eCe").innerHTML = (results["val_strat"]).toString()
+                        document.getElementById("simulation_value").innerHTML = simulationValue
 
 
-
-
+                        chart.data.datasets[0].data = downsample(originalData, 500);
+                        chart.data.datasets[1].data = downsample(originalExpectedValue, 500);
+                        chart.update();
 
                         }).error(function (error) {
 
@@ -434,8 +401,8 @@
                     var code64 = document.getElementById("code").value
                     var data = JSON.parse(atob(code64));
 
-                    $log.log("Dati:");
-                    $log.log(data);
+                    //$log.log("Dati:");
+                    //$log.log(data);
 
                     $scope.strat_player1 = data["strat1"];
                     $scope.strat_player2 = data["strat2"];

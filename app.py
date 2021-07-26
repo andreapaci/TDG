@@ -20,13 +20,10 @@ def index():
     return render_template('src/index.html')
 
 
-#Aggiungere errore di ritrorno quando faccio results se non va a buon fine
-
 @app.route('/results', methods=['POST'])
 def results():
-    print(request.get_json())
-    data = request.get_json()
 
+    data = request.get_json()
 
     strat1_number = data["strat1"]
     strat2_number = data["strat2"]
@@ -44,9 +41,10 @@ def results():
 
     return handler.studio_analitico(matrix, strat1_names, strat2_names)
 
+
 @app.route('/simulate', methods=['POST'])
 def simulate():
-    print(str(request.get_json()))
+
     data = request.get_json()
 
     strat1 = util.convertStratToFloat(data["strat1"])
@@ -62,9 +60,6 @@ def simulate():
             or not util.check_strategy(strat1) or not util.check_strategy(strat2):
         return "Inserire valori validi di iterazioni e/o strategie", 403
 
-    #CONTROLLA 1) CAMBIANDO LA MATRICE SENZA FARE PROCEDI, QUALE MATRICE PASSA? QUELLA VECCHIA O QUELLA NUOVA? 2) CONTROLLA SE FA I CHECK GIUSTI SULLE VARIABILI
-    # CONTROLLA 3) CHE IL NUMERO DI ITERAZIONI CALCOLATO NEL JS è CORRETTO E NON SBALAZA DI -/+ 1
-    # CONTROLLA 4) il checkstrategy
     return handler.simulazione(matrix, strat1, strat2, int(iterations), ultimo_val)
 
 

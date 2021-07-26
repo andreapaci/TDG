@@ -96,7 +96,7 @@ def gioco_misto(matrice, strat1_name, strat2_name):
 
 def strat_conservative_miste(matrice):
 
-    modello = ampl_handler.crea_modello_AMPL(matrice)
+    modello = ampl_handler.create_AMPL_model(matrice)
 
     return ampl_handler.solve_model(modello, matrice)
 
@@ -123,6 +123,7 @@ def simulazione(matrice, strat1, strat2, n_iterazioni, last_value):
 
 # Restituisce strategie dominanti, conservative e valore del gioco
 def studio_analitico(matrice, strat1_name, strat2_name):
+
     # Gioco puro
     puro = gioco_puro(matrice, strat1_name, strat2_name)
 

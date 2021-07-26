@@ -3,7 +3,6 @@ import random
 
 # File contenente funzioni di utilità
 
-
 # Restituisce la colonna i-esima dalla matrice (contando da 0)
 def column(matrix, i):
     return [row[i] for row in matrix]
@@ -90,7 +89,7 @@ def check_strategy(vect):
             return False
         sum += elem
 
-    #Tolleranza approssimazione del float
+    # Tolleranza approssimazione del float
     if sum < 0.99 or sum > 1.01:
         return False
 
